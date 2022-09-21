@@ -43,6 +43,7 @@ RUN addgroup -S myviews && adduser -S myviews -G myviews
 ENV HOME=/home/myviews
 ENV APP_HOME=/home/myviews/web
 RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/staticfiles
 WORKDIR $APP_HOME
 
 # install dependencies
