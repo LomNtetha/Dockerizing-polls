@@ -10,5 +10,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('polls.urls')),
     path("pages/", include("pages.urls")),  # new
-    path("posts/", include("posts.urls")),
 ]
