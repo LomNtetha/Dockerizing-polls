@@ -8,7 +8,6 @@ WORKDIR /usr/src/myviews
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-
 # install psycopg2 dependencies
 RUN apk update \
     && apk add postgresql-dev gcc python3-dev musl-dev
@@ -20,14 +19,3 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . .
-# copy entrypoint.sh
-COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /usr/src/myviews/entrypoint.sh
-RUN chmod +x /usr/src/myviews/entrypoint.sh
-
-# copy project
-COPY . .
-
-# run entrypoint.sh
-ENTRYPOINT ["/usr/src/myviews/entrypoint.sh"] 
-

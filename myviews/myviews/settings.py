@@ -17,21 +17,13 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(
-    ALLOWED_HOSTS=(list, []),
-    DEBUG=(bool, False),
-)
-env_file = BASE_DIR / ".env"
-if env_file.exists():
-    environ.Env.read_env(env_file)
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-SECRET_KEY = env("SECRET_KEY")
-#prepare for heroku
-DEBUG = env("DEBUG")
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
-
-ALLOWED_HOSTS: list[str] = env("ALLOWED_HOSTS")
-
+# 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
+# For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 # Application definition
 
 INSTALLED_APPS = [
