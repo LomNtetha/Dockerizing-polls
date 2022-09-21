@@ -20,11 +20,8 @@ services:
       - ./.env.prod.db
   nginx:
     build: ./nginx
-    volumes:
-      - static_volume:/home/app/web/staticfiles
-      - media_volume:/home/app/web/mediafiles
     ports:
-      - 1337:80
+      - 3000:80
     depends_on:
       - web
  
