@@ -27,9 +27,9 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
-    "pages.apps.PagesConfig", 
-      "posts.apps.PostsConfig", 
+    "polls.apps.PollsConfig",
+    "pages.apps.PagesConfig",
+    "posts.apps.PostsConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
