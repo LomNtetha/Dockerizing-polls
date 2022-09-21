@@ -5,7 +5,7 @@ services:
     build: ./myviews
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./app/:/usr/src/myviews/
+      - ./myviews/:/usr/src/myviews/
     ports:
       - 8000:8000
     env_file:
@@ -18,7 +18,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=myviews
+      - POSTGRES_USER=lumkile
       - POSTGRES_PASSWORD=1111
       - POSTGRES_DB=myviews_dev
 
