@@ -5,12 +5,12 @@ services:
     build:
       context: ./myviews
       dockerfile: Dockerfile.prod
-    command: gunicorn myviews.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn myviews.wsgi:application --bind 0.0.0.0:8080
     volumes:
       - static_volume:/home/myviews/web/staticfiles
       - media_volume:/home/myviews/web/mediafiles
     expose:
-      - 8000
+      - 8080
     env_file:
       - ./.env.prod
     depends_on:

@@ -18,7 +18,7 @@ RUN apk update \
 
 # lint
 RUN pip install --upgrade pip
-RUN pip install flake8
+RUN pip install flake8==3.9.2
 COPY . .
 #RUN flake8 --ignore=E501,F401 .
 
@@ -39,11 +39,13 @@ RUN mkdir -p /home/myviews
 
 # create the app user
 RUN addgroup -S myviews && adduser -S myviews -G myviews
+
 # create the appropriate directories
 ENV HOME=/home/myviews
 ENV APP_HOME=/home/myviews/web
 RUN mkdir $APP_HOME
 RUN mkdir $APP_HOME/staticfiles
+RUN mkdir $APP_HOME/mediafiles
 WORKDIR $APP_HOME
 
 # install dependencies

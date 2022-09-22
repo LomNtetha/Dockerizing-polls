@@ -21,6 +21,7 @@ RUN pip install -r requirements.txt
 COPY ./entrypoint.sh .
 RUN sed -i 's/\r$//g' /usr/src/myviews/entrypoint.sh
 RUN chmod +x /usr/src/myviews/entrypoint.sh
+
 # copy project
 COPY . .
 
