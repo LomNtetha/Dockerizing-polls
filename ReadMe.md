@@ -1,19 +1,10 @@
 # Dockerizing-polls
 Dockerizing Django Polls  with PostgreSQL,  Gunicorn  and nginx.  nginx is also used to serve media and staticfiles. Entrypoint.sh verify that PostgreSQL is healthy before applying the migrations and running the Django development server
-# Library-Management-System
-This is the basic library management system that is written with django class based function . The main goal of this system was to write  python django framework code that is clean and tested using  unit testing ,Test Driven Development.
-# new changes comming
-Project workflow CI/CD pipeline to be add soon , Either github actions or gitlab will be add as workflow for this project 
+
 # System prerequisite
 - To Run this project you need to have some basics of Django, Ubuntu and git
 - Ensure that ubuntu, python, git, editor (such as VS code), docker and docker composer are installed in your system
 
-## project is live and running on heroku
-- live link: https://mighty-sea-09546.herokuapp.com/catalog/
-- Login admin creditials:
-- https://mighty-sea-09546.herokuapp.com/admin
-- username:admin
-- password:1111
 ## How to run The project Local for Development
 
 To get started please ensure that python 3.8 or above is installed in your system
@@ -21,11 +12,11 @@ To get started please ensure that python 3.8 or above is installed in your syste
 
 - To run the project locally first of all clone the repository 
   ```
-  git clone https://github.com/LomNtetha/Library-Management-System.git
+  git clone https://github.com/LomNtetha/Dockerizing-polls.git
   ```
 - go to project directory
   ```
-  cd Library-Management-System
+  cd Dockerizing-polls
   ```
 - Remove exisitng volumes
  ```
@@ -33,7 +24,7 @@ To get started please ensure that python 3.8 or above is installed in your syste
  ```
 - All0w entrypoint permissions to verify that PostgreSQL is healthy before applying the migrations for Development
   ```
-  chmod +x locallibrary/entrypoint.sh
+  chmod +x myviews/entrypoint.sh
   ```
 - Build the images and run the containers
   ```
@@ -45,15 +36,15 @@ To get started please ensure that python 3.8 or above is installed in your syste
   ```
 - Ensure the default Django tables were created
  ```
- docker-compose exec db psql --username=admin --dbname=locallibrary_dev
+ docker-compose exec db psql --username=lumkile --dbname=myviews_dev
  ```
  List databases
   ```
   \l
   ```
-  connected to database "locallibrary_dev" 
+  connected to database "myviews_dev" 
   ```
-   \c locallibrary_dev
+   \c myviews_dev
    ```
  List relations
  ```
@@ -66,7 +57,7 @@ To get started please ensure that python 3.8 or above is installed in your syste
 
 -  check that the volume was created as well by running
   ```
-   docker volume inspect Library-Management-System_postgres_data
+   docker volume inspect Dockerizing-polls_postgres_data
    ```
 - Create superuser
   ```
@@ -76,7 +67,7 @@ To get started please ensure that python 3.8 or above is installed in your syste
  ```
   docker-compose  exec web python manage.py collectstatic --no-input --clear
   ```
-- You should be able to view the page at http://localhost:9000/catalog
+- You should be able to view the page at http://localhost:8080/
 
 - Check for errors in the logs if this doesn't work via 
   ```
@@ -90,7 +81,7 @@ To get started please ensure that python 3.8 or above is installed in your syste
  
 - Allow entrypoint permissions to verify that PostgreSQL is healthy before applying the migrations for production
  ```
- chmod +x locallibrary/entrypoint.prod.sh
+ chmod +x myviews/entrypoint.prod.sh
  ```
 - Build the images and run the containers
  ```
@@ -108,7 +99,7 @@ To get started please ensure that python 3.8 or above is installed in your syste
  ```
  docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear
  ```
-- then visit: http://localhost:5000/catalog/
+- then visit: http://localhost:3000/
 
 - if the container fails to start, check for errors in the logs via 
  ```
