@@ -105,50 +105,6 @@ To get started please ensure that python 3.8 or above is installed in your syste
  ```
  docker-compose -f docker-compose.prod.yml logs -f
  ```
-## How to push the project on cloud Heroku PAAS
-
-install heroku cli and git on you system and create  account on heroku
-
-- on project directory
-  ```
-  git add .
-  ```
-
-  
-- commit changes
- ```
- git commit -m "My comments"
- ```
-     
-- create project name
-  ```
-  heroku create
-  ```
-
-- Ensure that projet repostory is listed
-  ```
-  git remote -v
-  ```
-
-- push the project to heroku
-  ```
-  git push heroku master
-  ```
-
-- Create migrations and super user
-  ```
-  heroku run python manage.py migrate
-  ```
-
-  ```
-  heroku run python manage.py createsuperuser
-  ```
-
-- open the project
-  ```
-  heroku open
-  ```
-
 ## Technology tools and python packages used to develop this system
 - Ubuntu 22.04.1 LTS
 - Docker version 20.10.18, build b40c2f6
@@ -161,6 +117,5 @@ install heroku cli and git on you system and create  account on heroku
 - gunicorn 20.1.0 for http/https server request and WSGI server
 - flake8
 - Entrypoint shell
-- bootstrap 5
 
  
